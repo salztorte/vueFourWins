@@ -1,26 +1,35 @@
 <template>
     <div class="fieldItem"
-         :class="{ 'player-one': item.player === 1 }"
-         @click="$emit('click', item)"
+         :style="{backgroundColor: backgroundColor}"
+         @click="click"
     >
     </div>
 </template>
 
 <script>
-    import FieldMixin from '@/mixins/Field';
+    import { mapGetters } from 'vuex';
 
     export default {
         name: 'FieldItem',
-        mixins: [FieldMixin],
         props: {
             'fieldItem': Object,
         },
-        data() {
-            return {
-                "item": this.fieldItem,
-            };
+        computed: {
+            item() {
+                return this.fieldItem
+            },
+            ...mapGetters(['getPlayerColor']),
+            backgroundColor(){
+                return this.getPlayerColor(this.item.player);
+             },
+
         },
         methods: {
+            click(event) {
+                event.preventDefault();
+                if (this.item.player !== 0) return;
+                this.$emit('click', this.item)
+            },
         },
     };
 </script>
@@ -32,10 +41,4 @@
         box-sizing border-box
         border 1px gray solid
     }
-
-    .player-one {
-        background-color red
-    }
-
-
 </style>

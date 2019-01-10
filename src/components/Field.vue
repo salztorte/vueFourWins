@@ -16,23 +16,30 @@
 
 <script>
     import FieldItem from './FieldItem.vue';
-    import FieldMixin from '@/mixins/Field';
+    import { mapState, mapMutations  } from 'vuex'
+
 
     export default {
         name: 'Field',
         components: {
             FieldItem,
         },
-        mixins: [FieldMixin],
         data() {
-            return {
-                playField: this.createField(),
-            };
+            return {}
+        },
+        computed: {
+            ...mapState([
+                'currentPlayer',
+                'playField',
+            ]),
+
         },
         methods: {
+            ...mapMutations(['changePlayer', 'changeFieldValue']),
             selectField(item){
-                const deepField = this.findDeepestField(item);
-                this.playField[deepField.height][deepField.width].player = 1
+                const {height, width} = this.findDeepestField(item);
+                this.changeFieldValue(height, width, this.currentPlayer);
+                this.changePlayer();
             },
             findDeepestField(item){
                 if(item.height === this.playField.length - 1) return item;
