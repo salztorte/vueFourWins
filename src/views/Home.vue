@@ -1,18 +1,17 @@
 <template>
-  <div class="home">
-    <Field></Field>
-  </div>
+    <div class="home">
+        <Field />
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Field from '@/components/Field.vue'
+    // @ is an alias to /src
+    import Field from '@/components/Field.vue';
+    export default {
+        name: 'Home',
+        components: {
+            Field,
+        },
 
-export default {
-  name: 'home',
-    components: {
-        Field,
-    },
-
-}
+    };
 </script>
