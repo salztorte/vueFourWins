@@ -11,5 +11,6 @@ export default {
     getters: {
         getFieldHeight: (state) => state.fieldHeight,
         getFieldWidth: (state) => state.fieldWidth,
+        getPlayerColor: (state) => (playerNumber) => state.colors[playerNumber],
     }
 };

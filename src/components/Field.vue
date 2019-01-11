@@ -28,9 +28,15 @@
         components: {
             FieldItem,
         },
+        props: {
+            initialPlayField :{
+                type: Array,
+                required: true,
+            },
+        },
         data() {
             return {
-                playField: createField(),
+                playField: this.initialPlayField,
             };
         },
         computed: {

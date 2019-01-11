@@ -7,7 +7,8 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex';
+    import { createNamespacedHelpers } from 'vuex';
+    const configHelper = createNamespacedHelpers('config');
 
     export default {
         name: 'FieldItem',
@@ -18,7 +19,7 @@
             item() {
                 return this.fieldItem
             },
-            ...mapGetters(['getPlayerColor']),
+            ...configHelper.mapGetters(['getPlayerColor']),
             backgroundColor(){
                 return this.getPlayerColor(this.item.player);
              },

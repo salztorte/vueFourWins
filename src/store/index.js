@@ -18,7 +18,4 @@ export default new Vuex.Store({
         },
     },
     actions: {  },
-    getters: {
-        getPlayerColor: (state) => (playerNumber) => state.config.colors[playerNumber],
-    }
 })
