@@ -3,6 +3,7 @@
          :style="{backgroundColor: backgroundColor}"
          @click="click"
     >
+        {{item.player}}
     </div>
 </template>
 
@@ -23,7 +24,6 @@
             backgroundColor(){
                 return this.getPlayerColor(this.item.player);
              },
-
         },
         methods: {
             click(event) {
