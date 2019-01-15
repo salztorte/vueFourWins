@@ -91,7 +91,6 @@ export default {
         },
         countField(height, width, block) {
             const newPos = block(height, width);
-            console.log(newPos);
             if (newPos.height < 0 || newPos.height >= this.fieldHeight) return 0;
             if (newPos.width < 0 || newPos.width >= this.fieldWidth) return 0;
 

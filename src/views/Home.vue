@@ -17,10 +17,10 @@
             Field,
         },
         computed: {
-            ...configHelper.mapState([
-                "fieldWidth",
-                "fieldHeight",
-            ]),
+            ...configHelper.mapGetters({
+                fieldWidth: "getFieldWidth",
+                fieldHeight: "getFieldHeight",
+            }),
             playField() {
                 return createField(this.fieldWidth, this.fieldHeight);
             }

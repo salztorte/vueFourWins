@@ -6,7 +6,9 @@ export default {
         fieldHeight: 7,
         winCombo: 4,
     },
-    mutations: {},
+    mutations: {
+
+    },
     actions: {},
     getters: {
         getFieldHeight: (state) => state.fieldHeight,
