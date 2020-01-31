@@ -3,7 +3,7 @@
     <button @click="reset">Reset</button>
     <div v-if="gameEnd">Player {{currentPlayer}} wins</div>
 
-    <div class="row"
+    <div class="field-row"
             v-for="(row, rowindex) in playField._field"
             :key="rowindex"
     >
@@ -40,10 +40,8 @@ export default {
         };
     },
     computed: {
-        ...mapState([
-            'currentPlayer',
-        ]),
-        ...configHelper.mapState(['winCombo', 'fieldHeight', 'fieldWidth']),
+        ...mapState(['currentPlayer']),
+        ...configHelper.mapGetters(['winCombo', 'fieldHeight', 'fieldWidth']),
     },
     methods: {
         ...mapMutations(['changePlayer', 'changeFieldValue']),
@@ -74,7 +72,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-    .row {
+    .field-row {
         display flex
         flex-direction row
 

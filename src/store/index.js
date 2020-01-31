@@ -19,14 +19,14 @@ export default new Vuex.Store({
         config: Config,
     },
     mutations: {
-        initialiseStore(state){
-          const storeValue = localStorage.getItem("config");
+        initialiseStore(/*state*/){
+          /*const storeValue = localStorage.getItem("config");
           if(!storeValue) return;
 
             this.replaceState(
               Object.assign(state, JSON.parse(storeValue))
             )
-
+*/
         },
         changePlayer: (state) => {
             if(state.currentPlayer === 1) state.currentPlayer = 2;

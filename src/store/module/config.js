@@ -4,15 +4,18 @@ export default {
         colors: ['#FFF', '#FF0', '#0F0'],
         fieldWidth: 7,
         fieldHeight: 7,
-        winCombo: 4,
+        winCombo: 5,
     },
     mutations: {
-
+        updateFieldHeight: (state, height) => state.fieldHeight = height,
+        updateFieldWidth: (state, width) => state.fieldWidth = width,
+        updateWinCombo: (state, combo) => state.winCombo = combo,
     },
     actions: {},
     getters: {
-        getFieldHeight: (state) => state.fieldHeight,
-        getFieldWidth: (state) => state.fieldWidth,
-        getPlayerColor: (state) => (playerNumber) => state.colors[playerNumber],
+        fieldHeight: state => state.fieldHeight,
+        fieldWidth: state => state.fieldWidth,
+        playerColor: state => (playerNumber) => state.colors[playerNumber],
+        winCombo: state => state.winCombo,
     }
 };

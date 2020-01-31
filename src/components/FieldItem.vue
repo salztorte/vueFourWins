@@ -1,7 +1,6 @@
 <template>
 
     <div class="fieldItem"
-
          @click="click"
     >
         <div class="fieldItem__coin" :style="{backgroundColor: backgroundColor}"></div>
@@ -21,9 +20,9 @@
             item() {
                 return this.fieldItem
             },
-            ...configHelper.mapGetters(['getPlayerColor']),
+            ...configHelper.mapGetters(['playerColor']),
             backgroundColor(){
-                return this.getPlayerColor(this.item.player);
+                return this.playerColor(this.item.player);
              },
         },
         methods: {

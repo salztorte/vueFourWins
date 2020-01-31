@@ -17,11 +17,9 @@
             FieldView,
         },
         computed: {
-            ...configHelper.mapGetters({
-                fieldWidth: "getFieldWidth",
-                fieldHeight: "getFieldHeight",
-            }),
+            ...configHelper.mapGetters(["fieldWidth", "fieldHeight"]),
             playField() {
+                console.log(this.fieldHeight, this.fieldWidth);
                 return new Field(this.fieldWidth, this.fieldHeight);
             }
         }
