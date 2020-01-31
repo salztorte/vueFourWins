@@ -1,7 +1,7 @@
 <template>
 <div class="field">
     <button @click="reset">Reset</button>
-    <div v-if="gameEnd">Player {{currentPlayer.id}} wins</div>
+    <div v-if="gameEnd">{{currentPlayer.name}} wins</div>
 
     <div class="field-row"
             v-for="(row, rowindex) in playField._field"

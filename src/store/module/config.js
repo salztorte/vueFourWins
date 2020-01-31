@@ -3,7 +3,6 @@ import { Player } from '../../creator/Player'
 export default {
     namespaced: true,
     state: {
-        colors: ['#FFF', '#FF0', '#0F0'],
         fieldWidth: 7,
         fieldHeight: 7,
         winCombo: 5,
@@ -13,13 +12,12 @@ export default {
         updateFieldHeight: (state, height) => state.fieldHeight = height,
         updateFieldWidth: (state, width) => state.fieldWidth = width,
         updateWinCombo: (state, combo) => state.winCombo = combo,
-        updateColor: (state, {index, color}) => state.colors[index] = color,
+        updateColor: (state, {id, color}) => state.player.find(p => p.id == id).color = color,
     },
     actions: {},
     getters: {
         fieldHeight: state => state.fieldHeight,
         fieldWidth: state => state.fieldWidth,
-        playerColor: state => (playerNumber) => state.colors[playerNumber],
         winCombo: state => state.winCombo,
         player: state => state.player,
     }

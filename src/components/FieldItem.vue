@@ -24,7 +24,7 @@
         methods: {
             click(event) {
                 event.preventDefault();
-                if (!this.item.player.isEmpty()) return;
+                if (!this.item.player.isEmpty) return;
                 this.$emit('click', this.item)
             },
         },

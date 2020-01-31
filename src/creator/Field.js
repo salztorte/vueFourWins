@@ -71,7 +71,7 @@ export class Field {
   findDeepestCell(cell) {
     if (cell.y === this._field.length - 1) return cell;
     const nextCell = this._field[cell.y + 1][cell.x];
-    if (!nextCell.player.isEmpty()) return cell;
+    if (!nextCell.player.isEmpty) return cell;
 
     return this.findDeepestCell(nextCell);
   }

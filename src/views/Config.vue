@@ -18,8 +18,9 @@
   </v-row>
 
   <v-row>
-    <v-col cols="12" sm="12" md="6" v-for="(pColor, index) in colors" :key="index">
-      <v-color-picker :value="color(index)" @update:color="setColor(index, $event.hex)" ></v-color-picker>
+    <v-col cols="12" sm="6" md="3" v-for="(player, index) in realPlayer" :key="index">
+      <v-text-field label="Playername" type="string" v-model="player.name" :filled="true"></v-text-field>
+      <v-color-picker :value="player.color" @update:color="setColor(player.id, $event.hex)" ></v-color-picker>
     </v-col>
 
   </v-row>
@@ -37,14 +38,12 @@ const configHelper = createNamespacedHelpers('config');
 export default {
   name: "Config",
   computed: {
-    ...configHelper.mapState(['colors']),
     ...configHelper.mapGetters([
+      'player' ,
       'fieldWidth',
       'fieldHeight',
       'winCombo',
-      'playerColor',
     ]),
-
     height: {
       get() {
         return this.fieldHeight
@@ -53,7 +52,6 @@ export default {
         this.updateFieldHeight(parseInt(value))
       }
     },
-
     width: {
       get() {
         return this.fieldWidth
@@ -70,10 +68,9 @@ export default {
         this.updateWinCombo(parseInt(value))
       }
     },
-    color() {
-      return index => this.playerColor(index)
-    },
-
+    realPlayer() {
+      return this.player.filter(p => !p.isEmpty)
+    }
   },
   methods: {
     ...configHelper.mapMutations([
@@ -82,8 +79,8 @@ export default {
       'updateWinCombo',
       'updateColor'
     ]),
-    setColor(index, color) {
-      this.updateColor({index, color});
+    setColor(id, color) {
+      this.updateColor({id, color});
     }
   }
 }
