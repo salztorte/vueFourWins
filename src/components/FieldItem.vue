@@ -1,9 +1,10 @@
 <template>
+
     <div class="fieldItem"
-         :style="{backgroundColor: backgroundColor}"
+
          @click="click"
     >
-        {{item.player}}
+        <div class="fieldItem__coin" :style="{backgroundColor: backgroundColor}"></div>
     </div>
 </template>
 
@@ -41,5 +42,12 @@
         height 50px
         box-sizing border-box
         border 1px gray solid
+        background: gray
+
+        &__coin {
+            height 45px
+            width 45px
+            border-radius: 50%;
+        }
     }
 </style>
