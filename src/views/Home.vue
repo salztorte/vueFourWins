@@ -1,20 +1,20 @@
 <template>
     <div class="home">
-        <Field :initialPlayField="playField"/>
+        <FieldView :initialPlayField="playField"/>
     </div>
 </template>
 
 <script>
     // @ is an alias to /src
-    import Field from '@/components/Field.vue';
-    import {createField} from '../creator/Field';
+    import FieldView from '@/components/Field.vue';
+    import {Field} from '../creator/Field';
     import {createNamespacedHelpers} from 'vuex';
 
     const configHelper = createNamespacedHelpers('config');
     export default {
         name: 'Home',
         components: {
-            Field,
+            FieldView,
         },
         computed: {
             ...configHelper.mapGetters({
@@ -22,7 +22,7 @@
                 fieldHeight: "getFieldHeight",
             }),
             playField() {
-                return createField(this.fieldWidth, this.fieldHeight);
+                return new Field(this.fieldWidth, this.fieldHeight);
             }
         }
 
