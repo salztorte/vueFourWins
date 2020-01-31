@@ -8,9 +8,6 @@
 </template>
 
 <script>
-    import { createNamespacedHelpers } from 'vuex';
-    const configHelper = createNamespacedHelpers('config');
-
     export default {
         name: 'FieldItem',
         props: {
@@ -20,15 +17,14 @@
             item() {
                 return this.fieldItem
             },
-            ...configHelper.mapGetters(['playerColor']),
             backgroundColor(){
-                return this.playerColor(this.item.player);
+                return this.item.player.color;
              },
         },
         methods: {
             click(event) {
                 event.preventDefault();
-                if (this.item.player !== 0) return;
+                if (!this.item.player.isEmpty()) return;
                 this.$emit('click', this.item)
             },
         },

@@ -13,7 +13,7 @@ const localStorePlugin = store =>  {
 
 export default new Vuex.Store({
     state: {
-        currentPlayer: 1,
+        currentPlayerIndex: 1,
     },
     modules :{
         config: Config,
@@ -29,12 +29,16 @@ export default new Vuex.Store({
 */
         },
         changePlayer: (state) => {
-            if(state.currentPlayer === 1) state.currentPlayer = 2;
-            else state.currentPlayer = 1;
+            state.currentPlayerIndex = (state.currentPlayerIndex % (state.config.player.length - 1)) + 1
         },
     },
     actions: {  },
-    plugins :[localStorePlugin]
+    plugins :[localStorePlugin],
+    getters: {
+        currentPlayer: state => {
+            return state.config.player[state.currentPlayerIndex]
+        },
+    }
 })
 
 

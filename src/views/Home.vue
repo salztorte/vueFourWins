@@ -19,7 +19,6 @@
         computed: {
             ...configHelper.mapGetters(["fieldWidth", "fieldHeight"]),
             playField() {
-                console.log(this.fieldHeight, this.fieldWidth);
                 return new Field(this.fieldWidth, this.fieldHeight);
             }
         }

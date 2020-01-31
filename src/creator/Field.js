@@ -1,3 +1,5 @@
+import {Player} from "./Player";
+
 export class Position {
   x;
   y;
@@ -42,14 +44,14 @@ export class Position {
 
 
 export class Cell extends Position {
-  player = 0;
+  player = new Player();
 
   constructor(x, y) {
     super(x, y)
   }
 
   reset() {
-    this.player = 0;
+    this.player = new Player();
   }
 }
 
@@ -69,7 +71,7 @@ export class Field {
   findDeepestCell(cell) {
     if (cell.y === this._field.length - 1) return cell;
     const nextCell = this._field[cell.y + 1][cell.x];
-    if (nextCell.player !== 0) return cell;
+    if (!nextCell.player.isEmpty()) return cell;
 
     return this.findDeepestCell(nextCell);
   }

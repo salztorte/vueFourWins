@@ -1,7 +1,7 @@
 <template>
 <div class="field">
     <button @click="reset">Reset</button>
-    <div v-if="gameEnd">Player {{currentPlayer}} wins</div>
+    <div v-if="gameEnd">Player {{currentPlayer.id}} wins</div>
 
     <div class="field-row"
             v-for="(row, rowindex) in playField._field"
@@ -18,8 +18,7 @@
 
 <script>
 import FieldItem from './FieldItem.vue';
-import {createNamespacedHelpers, mapMutations, mapState} from 'vuex';
-
+import {createNamespacedHelpers, mapMutations, mapGetters} from 'vuex';
 const configHelper = createNamespacedHelpers('config');
 
 export default {
@@ -40,7 +39,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(['currentPlayer']),
+        ...mapGetters(['currentPlayer']),
         ...configHelper.mapGetters(['winCombo', 'fieldHeight', 'fieldWidth']),
     },
     methods: {
