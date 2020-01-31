@@ -18,8 +18,8 @@
   </v-row>
 
   <v-row>
-    <v-col cols="12" sm="12" md="6">
-      <v-color-picker></v-color-picker>
+    <v-col cols="12" sm="12" md="6" v-for="(pColor, index) in colors" :key="index">
+      <v-color-picker :value="color(index)" @update:color="setColor(index, $event.hex)" ></v-color-picker>
     </v-col>
 
   </v-row>
@@ -37,10 +37,12 @@ const configHelper = createNamespacedHelpers('config');
 export default {
   name: "Config",
   computed: {
+    ...configHelper.mapState(['colors']),
     ...configHelper.mapGetters([
       'fieldWidth',
       'fieldHeight',
-      'winCombo'
+      'winCombo',
+      'playerColor',
     ]),
 
     height: {
@@ -67,11 +69,22 @@ export default {
       set(value) {
         this.updateWinCombo(parseInt(value))
       }
-    }
+    },
+    color() {
+      return index => this.playerColor(index)
+    },
 
   },
   methods: {
-    ...configHelper.mapMutations(['updateFieldHeight', 'updateFieldWidth', 'updateWinCombo']),
+    ...configHelper.mapMutations([
+      'updateFieldHeight',
+      'updateFieldWidth',
+      'updateWinCombo',
+      'updateColor'
+    ]),
+    setColor(index, color) {
+      this.updateColor({index, color});
+    }
   }
 }
 </script>
